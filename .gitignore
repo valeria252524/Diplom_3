@@ -1,0 +1,34 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper.js
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS/system
+.DS_Store
+Thumbs.db
+
+
+# Environment files
+.env
+*.env
+
+# Java
+*.class
+
+# Temporary files
+*.swp
+*.bak
+*.tmp
