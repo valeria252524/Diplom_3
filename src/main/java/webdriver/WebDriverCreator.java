@@ -1,14 +1,11 @@
 package webdriver;
 
+import config.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WebDriverCreator {
-
-    private static final String CHROMEDRIVER_PATH = "/Users/valeriamalygina/chromedriver/chromedriver";
-    private static final String YANDEX_BROWSER_PATH = "/Applications/Yandex.app/Contents/MacOS/Yandex";
-    private static final String YANDEX_DRIVER_PATH = "/Users/valeriamalygina/chromeyandexdriver/chromedriver-134"; // тот же chromedriver
 
     public static WebDriver getWebDriver(String browserName) {
         switch (browserName.toLowerCase()) {
@@ -22,15 +19,18 @@ public class WebDriverCreator {
     }
 
     private static WebDriver createChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
+        String chromeDriverPath = ConfigReader.get("chrome.driver.path");
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
         return new ChromeDriver(options);
     }
 
     private static WebDriver createYandexDriver() {
-        System.setProperty("webdriver.chrome.driver", YANDEX_DRIVER_PATH);
+        String yandexDriverPath = ConfigReader.get("yandex.driver.path");
+        String yandexBinaryPath = ConfigReader.get("yandex.binary.path");
+        System.setProperty("webdriver.chrome.driver", yandexDriverPath);
         ChromeOptions options = new ChromeOptions();
-        options.setBinary(YANDEX_BROWSER_PATH);
+        options.setBinary(yandexBinaryPath);
         return new ChromeDriver(options);
     }
 }
